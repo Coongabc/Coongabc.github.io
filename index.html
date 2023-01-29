@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>CoonginUS's portal</title>
 	<link rel="stylesheet" href="style.css">
+	<script src="https://kit.fontawesome.com/bcb7032f12.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <div id="header">
@@ -22,7 +23,7 @@
 		</nav>
 		<div class="header-text">
 			<p>Data Analyst / Programmer</p>
-			<h1>Hi, This is <span>Cong</span> Doan from Vietnam!</h1> 
+			<h1>Hi, This is <span>Cong</span> Doan from Vietnam! <br> Currently based in the U.S.</h1> 
 		</div>
 	</div>
 </div>
@@ -38,21 +39,77 @@
 				<p>As a recent graduate in Business Administration with a focus on data analysis, I am excited to integrate my technical skills and business acumen to help organizations make data-driven decisions. I have experience in various data analysis tools and techniques, including SQL, Excel, and Tableau. I am also well-versed in data visualization and able to effectively communicate insights to stakeholders. My goal is to bridge the gap between technology and business, leveraging data to drive growth and efficiency in any organization I work with. Fluent in English and Vietnamese.</p>
 			
 				<div class="tab-titles">
-				<p class="tab-links active-link">Skills</p>
-				<p class="tab-links">Experience</p>
-				<p class="tab-links">Education</p>
-			</div>
-			<div class="tab-contents">
-				<ul>
-					<li><span>Programing</span><br>Data Analyst</li>
-					<li><span>Supply Chain</span><br>Import Operator</li>
-					<li><span>English-Vietnamese Translator</span><br>Bilingual</li>
-				</ul>
-			</div>
+					<p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+					<p class="tab-links" onclick="opentab('experience')">Experience</p>
+					<p class="tab-links" onclick="opentab('education')">Education</p>
+				</div>
+				<div class="tab-contents active-tab" id="skills">
+					<ul>
+						<li><span>Programming</span><br> Data Analyst/ Presentation </li>
+						<li><span>Supply Chain</span><br>Import Procedure/ Freight Forwarder</li>
+						<li><span> Bilingual</span><br>English-Vietnamese Translator/ Interpreter</li>
+					</ul>
+				</div>
+				<div class="tab-contents" id="experience">
+					<ul>
+						<li><span>August 2021 - Now</span><br>Import Operation @ LiviOcean Logistics, Inc.</li>
+						<li><span>September 2019 - Now</span><br>English - Vietnamese Interpreter @ Upwork (a.k.a Freelancer)</li>
+						<li><span>October 2015 - May 2019</span><br> Planning Specialist @ Nanoco Group </li>
+						<li><span>April 2014 - March 2015</span><br>Custom Broker @ Thu Hien Import & Export Company</li>
+					</ul>
+				</div>
+				<div class="tab-contents" id="education">
+					<ul>
+						<li><span>2020 - 2022</span><br>Master's degree in Business Administration and Management @ Webster University </li>
+						<li><span>2020 - 2022</span><br> Certificate of Achievement in Information Technology @ Rio Hondo College </li>
+						<li><span>2011 - 2015</span><br>Bachelor's degree in International Relations and Affairs @ Vietnam National University Ho Chi Minh City | School Of Social Sciences And Humanities (USSH)</li>
+					</ul>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-	
+<!--------------Services--------------------->
+<div id="services">
+	<div class="container">
+		<h1 class="sub-title"> My Services </h1>
+		<div class="services-list">
+			<div>
+				<h2>Data analysis</h2>
+				<p>Conducted market research and analyzed data to optimize supply chain operations. Visualizing report for better understanding.</p>
+				<a href="#">learn more</a>
+			</div>
+			<div>
+				<h2>Import Operation</h2>
+				<p>Developed and implemented demand forecasting and inventory management strategies, intergrated with customized system for higher efficiency.</p>
+				<a href="#">learn more</a>
+			</div>
+			<div>
+				<h2>Translation/ Interpreter</h2>
+				<p>Communicated with clients, suppliers, and regulatory agencies to ensure compliance with laws and regulations for several occasions.</p>
+				<a href="#">learn more</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script>
+
+	var tablinks = document.getElementsByClassName("tab-links");
+	var tabcontents = document.getElementsByClassName("tab-contents");
+
+	function opentab(tabname){
+		for(tablink of tablinks){
+			tablink.classList.remove("active-link")
+		}
+		for(tabcontent of tabcontents){
+			tabcontent.classList.remove("active-tab")
+		}
+		event.currentTarget.classList.add("active-link");
+		document.getElementById(tabname).classList.add("active-tab");
+	}
+
+</script>
+
 </body>
 </html>
