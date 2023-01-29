@@ -13,13 +13,15 @@
 	<div class="container"> 
 		<nav>
 			<img src="images/Logo.png" alt="">
-			<ul>
-				<li><a href="#">Home</a></li>
-				<li><a href="#">About me</a></li>
-				<li><a href="#">Services</a></li>
-				<li><a href="#">Cerfitication</a></li>
-				<li><a href="#">Contact</a></li>
+			<ul id="sidemenu">
+				<li><a href="#header">Home</a></li>
+				<li><a href="#about">About me</a></li>
+				<li><a href="#services">Services</a></li>
+				<li><a href="#portfolio">Cerfitication</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<i class="fa-solid fa-xmark" onclick="closemenu()"></i>
 			</ul>
+			<i class="fa-solid fa-bars" onclick="openmenu()"></i>
 		</nav>
 		<div class="header-text">
 			<p>Data Analyst / Programmer</p>
@@ -101,7 +103,7 @@
 <!-- ---------------------------------portfolio --------------------------------------- -->
 <div id="portfolio">
 	<div class="container">
-		<h1 class="sub-title"> My Certificate </h1>
+		<h1 class="sub-title"> My Certificates </h1>
 		<div class="work-list">
 			<div class="work">
 				<img src="images/IT.png">
@@ -145,12 +147,13 @@
 				<a href="images/Doan Tien Cong Resume (01.03.2023).pdf" download class="btn btn2"> Download CV	</a>
 			</div>
 			<div class="contact-right">
-				<form>
+				<form name="submit-to-google-sheet">
 					<input type="text" name="Name" placeholder="Your name" required>
-					<input type="email" name="email" placeholder="Your email" required>
+					<input type="email" name="Email" placeholder="Your email" required>
 					<textarea name="Message" rows="6" placeholder="Your message"></textarea>
 					<button type="submit" class="btn btn2"> Submit </button>
 				</form>
+				<span id="msg"></span>
 			</div>
 		</div>
 	</div>
@@ -158,7 +161,6 @@
 		<p>Follow the instruction by Kevin</p>
 	</div>
 </div>
-
 
 
 <script>
@@ -178,6 +180,37 @@
 	}
 
 </script>
+
+<script>
+	var sidemenu = document.getElementById("sidemenu");
+
+	function openmenu(){
+		sidemenu.style.right = "0";
+	}
+	function closemenu(){
+		sidemenu.style.right = "-200px";
+	}
+
+</script>
+
+<script>
+	const scriptURL = 'https://script.google.com/macros/s/AKfycbzZqp4VkfdUHs9UqvLIVM2Q7tCjr4l6c0KcFZ5FgL7A-34Q2SggwctBAUxb_1rHRAEDHg/exec'
+	const form = document.forms['submit-to-google-sheet']
+	const msg = document.getElementById("msg")
+  
+	form.addEventListener('submit', e => {
+	  e.preventDefault()
+	  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+		.then(response => {
+			msg.innerHTML = "Message sent successfully"
+			setTimeout(function(){
+				msg.innerHTML = ""
+			},5000)
+			form.reset()
+		})
+		.catch(error => console.error('Error!', error.message))
+	})
+	</script>
 
 </body>
 </html>
